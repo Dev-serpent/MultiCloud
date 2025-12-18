@@ -1,59 +1,50 @@
-
-
-```txt
-multicloud/
+MultiCloud/
 │
-├─ run.py                       # Main launcher (auto-detects platform)
-├─ platform.py                  # Environment detection
-├─ filesys.txt                  # Filesystem map
-├─ README.md                    # Documentation
-├─ requirements.txt             # Desktop dependencies
+├─ run.py
+├─ platform.py
+├─ vendor_init.py
+├─ filesys.txt
+├─ readme.txt
 │
-├─ core/                        # Core engine (shared everywhere)
+├─ core/
 │  ├─ __init__.py
-│  ├─ crypto.py                 # AES-256-GCM + Argon2
-│  ├─ packer.py                 # Folder → tar
-│  ├─ splitter.py               # Split & merge chunks
-│  ├─ verifier.py               # SHA-256 integrity
-│  ├─ backup.py                 # Backup pipeline
-│  └─ restore.py                # Restore pipeline
+│  ├─ crypto.py        # Encryption / decryption (AES-GCM + Argon2)
+│  ├─ packer.py        # Folder → tar.gz and back
+│  ├─ splitter.py      # Split / reassemble archives
+│  ├─ verifier.py      # SHA256 integrity checks
+│  ├─ backup.py        # Backup orchestration
+│  └─ restore.py       # Restore orchestration
 │
-├─ vault/                       # Secure credential storage
+├─ vault/
 │  ├─ __init__.py
-│  └─ vault.py                  # Encrypted token vault
+│  ├─ models.py        # Credential data models
+│  ├─ auth.py          # Master password hashing
+│  ├─ store.py         # Encrypted vault storage
+│  └─ vault.py         # High-level vault API
 │
-├─ clouds/                      # Cloud provider adapters
+├─ cli/
 │  ├─ __init__.py
-│  ├─ base.py                   # Adapter interface
-│  ├─ local.py                  # Local mock provider
-│  ├─ google.py                 # Google Drive adapter
-│  ├─ dropbox.py                # Dropbox adapter
-│  ├─ onedrive.py               # OneDrive adapter
-│  └─ s3.py                     # S3-compatible adapter
+│  └─ cli.py           # Command-line interface
 │
-├─ cli/                         # CLI (command mode)
+├─ tui/
 │  ├─ __init__.py
-│  └─ main.py                   # argparse-based CLI
-│
-├─ tui/                         # Terminal UI
-│  ├─ __init__.py
-│  ├─ app.py                    # TUI entry point
-│  ├─ screens.py                # Backup / restore screens
-│  └─ widgets.py                # Progress bars, menus
+│  └─ tui.py           # Terminal UI (text-based)
 │
 ├─ gui/
 │  ├─ __init__.py
-│  ├─ desktop/
-│  │  ├─ __init__.py
-│  │  └─ app_ctk.py             # customtkinter GUI
-│  │
-│  └─ ipad/
-│     ├─ __init__.py
-│     └─ app_pythonista.py      # Pythonista GUI
+│  ├─ gui_desktop.py   # customtkinter GUI
+│  └─ gui_ipad.py      # Pythonista-compatible GUI
 │
-├─ data/
-│  ├─ storage/                  # Simulated cloud storage
-│  └─ metadata/                 # Backup metadata
+├─ cloud/
+│  ├─ __init__.py
+│  ├─ base.py          # Cloud adapter interface
+│  ├─ aws.py           # AWS S3 adapter
+│  ├─ gdrive.py        # Google Drive adapter
+│  └─ dropbox.py       # Dropbox adapter
 │
-└─ logs/
-   └─ multicloud.log             # Runtime logs
+└─ vendor/
+   ├─ cryptography/
+   ├─ argon2/
+   ├─ customtkinter/
+   ├─ rich/
+   └─ other_vendored_modules/
