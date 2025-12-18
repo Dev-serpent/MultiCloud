@@ -1,0 +1,59 @@
+
+
+```txt
+multicloud/
+│
+├─ run.py                       # Main launcher (auto-detects platform)
+├─ platform.py                  # Environment detection
+├─ filesys.txt                  # Filesystem map
+├─ README.md                    # Documentation
+├─ requirements.txt             # Desktop dependencies
+│
+├─ core/                        # Core engine (shared everywhere)
+│  ├─ __init__.py
+│  ├─ crypto.py                 # AES-256-GCM + Argon2
+│  ├─ packer.py                 # Folder → tar
+│  ├─ splitter.py               # Split & merge chunks
+│  ├─ verifier.py               # SHA-256 integrity
+│  ├─ backup.py                 # Backup pipeline
+│  └─ restore.py                # Restore pipeline
+│
+├─ vault/                       # Secure credential storage
+│  ├─ __init__.py
+│  └─ vault.py                  # Encrypted token vault
+│
+├─ clouds/                      # Cloud provider adapters
+│  ├─ __init__.py
+│  ├─ base.py                   # Adapter interface
+│  ├─ local.py                  # Local mock provider
+│  ├─ google.py                 # Google Drive adapter
+│  ├─ dropbox.py                # Dropbox adapter
+│  ├─ onedrive.py               # OneDrive adapter
+│  └─ s3.py                     # S3-compatible adapter
+│
+├─ cli/                         # CLI (command mode)
+│  ├─ __init__.py
+│  └─ main.py                   # argparse-based CLI
+│
+├─ tui/                         # Terminal UI
+│  ├─ __init__.py
+│  ├─ app.py                    # TUI entry point
+│  ├─ screens.py                # Backup / restore screens
+│  └─ widgets.py                # Progress bars, menus
+│
+├─ gui/
+│  ├─ __init__.py
+│  ├─ desktop/
+│  │  ├─ __init__.py
+│  │  └─ app_ctk.py             # customtkinter GUI
+│  │
+│  └─ ipad/
+│     ├─ __init__.py
+│     └─ app_pythonista.py      # Pythonista GUI
+│
+├─ data/
+│  ├─ storage/                  # Simulated cloud storage
+│  └─ metadata/                 # Backup metadata
+│
+└─ logs/
+   └─ multicloud.log             # Runtime logs
