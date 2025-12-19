@@ -2,8 +2,9 @@ import json
 from pathlib import Path
 
 from core.crypto import encrypt, decrypt
+from core.config import config
 
-VAULT_FILE = Path("vault.sec")
+VAULT_FILE = Path(config.get("vault", "path", fallback="vault.sec"))
 
 
 def save_vault(data: dict, password: str):

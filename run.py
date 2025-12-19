@@ -1,51 +1,62 @@
 # multicloud/run.py
 
+import argparse
+import sys
 import vendor_init  # adds ./vendor to sys.path
+import tkinter as tk # Import tkinter here
 
-from platform import (
+from plat import (
     is_ipad,
-    available_interfaces,
 )
 
 
-def choose_interface(modes):
-    print("Available interfaces:")
-    for i, mode in enumerate(modes, 1):
-        print(f"{i}. {mode}")
-
-    while True:
-        try:
-            choice = int(input("Select interface: "))
-            if 1 <= choice <= len(modes):
-                return modes[choice - 1]
-        except ValueError:
-            pass
-        print("Invalid choice.")
-
-
 def main():
-    modes = available_interfaces()
+    parser = argparse.ArgumentParser(
+        prog="multicloud",
+        description="MultiCloud local backup system"
+    )
 
-    # iPad auto-launch GUI
+    parser.add_argument(
+        "interface",
+        nargs="?",
+        default="auto",
+        help="Specify the interface to run: cli, tui, gui, or auto (default)"
+    )
+
+    args, remaining_args = parser.parse_known_args()
+
     if is_ipad():
-        from gui.ipad_app import start_ipad_gui
-        start_ipad_gui()
+        from gui.gui_ipad import iPadGUI
+        iPadGUI().run()
         return
 
-    # Desktop: let user choose
-    selected = choose_interface(modes)
+    if args.interface == "cli":
+        from cli.cli import main as cli_main
+        cli_main(remaining_args)
+    elif args.interface == "tui":
+        from tui.tui import run_tui
+        run_tui()
+    elif args.interface == "gui":
+        from gui.gui_desktop import DesktopGUI, LoginWindow
+        login_root = tk.Tk()
+        login_window = LoginWindow(login_root)
+        user = login_window.run()
 
-    if selected == "cli":
-        from cli.app import run_cli
-        run_cli([])
-    elif selected == "tui":
-        from tui.app import start_tui
-        start_tui()
-    elif selected == "desktop_gui":
-        from gui.desktop_app import start_desktop_gui
-        start_desktop_gui()
+        if user:
+            gui = DesktopGUI(user)
+            gui.run()
+    elif args.interface == "auto":
+        # Default to GUI for desktop if not iPad
+        from gui.gui_desktop import DesktopGUI, LoginWindow
+        login_root = tk.Tk()
+        login_window = LoginWindow(login_root)
+        user = login_window.run()
+
+        if user:
+            gui = DesktopGUI(user)
+            gui.run()
     else:
-        print("Unknown interface selected.")
+        parser.print_help()
 
 
 if __name__ == "__main__":

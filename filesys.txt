@@ -1,50 +1,58 @@
 MultiCloud/
 │
 ├─ run.py
-├─ platform.py
+├─ plat.py
 ├─ vendor_init.py
 ├─ filesys.txt
 ├─ readme.txt
+├─ changelog.md
+├─ config.ini
+├─ client_secret.json
 │
 ├─ core/
 │  ├─ __init__.py
-│  ├─ crypto.py        # Encryption / decryption (AES-GCM + Argon2)
-│  ├─ packer.py        # Folder → tar.gz and back
-│  ├─ splitter.py      # Split / reassemble archives
-│  ├─ verifier.py      # SHA256 integrity checks
-│  ├─ backup.py        # Backup orchestration
-│  └─ restore.py       # Restore orchestration
+│  ├─ api.py
+│  ├─ backup.py
+│  ├─ crypto.py
+│  ├─ packer.py
+│  ├─ splitter.py
+│  ├─ verifier.py
+│  ├─ restore.py
+│  ├─ cloud_manager.py
+│  ├─ config.py
+│  └─ logging.py
 │
 ├─ vault/
 │  ├─ __init__.py
-│  ├─ models.py        # Credential data models
-│  ├─ auth.py          # Master password hashing
-│  ├─ store.py         # Encrypted vault storage
-│  └─ vault.py         # High-level vault API
+│  ├─ models.py
+│  ├─ auth.py
+│  ├─ store.py
+│  ├─ vault.py
+│  └─ user_manager.py
 │
 ├─ cli/
 │  ├─ __init__.py
-│  └─ cli.py           # Command-line interface
+│  └─ cli.py
 │
 ├─ tui/
 │  ├─ __init__.py
-│  └─ tui.py           # Terminal UI (text-based)
+│  ├─ tui.py
+│  └─ screens.py
 │
 ├─ gui/
 │  ├─ __init__.py
-│  ├─ gui_desktop.py   # customtkinter GUI
-│  └─ gui_ipad.py      # Pythonista-compatible GUI
+│  ├─ gui_desktop.py
+│  └─ gui_ipad.py
 │
 ├─ cloud/
 │  ├─ __init__.py
-│  ├─ base.py          # Cloud adapter interface
-│  ├─ aws.py           # AWS S3 adapter
-│  ├─ gdrive.py        # Google Drive adapter
-│  └─ dropbox.py       # Dropbox adapter
+│  ├─ base.py
+│  ├─ aws.py
+│  ├─ gdrive.py
+│  ├─ dropbox.py
+│  ├─ onedrive.py
+│  ├─ webdav.py
+│  └─ gdrive_auth.py
 │
 └─ vendor/
-   ├─ cryptography/
-   ├─ argon2/
-   ├─ customtkinter/
-   ├─ rich/
-   └─ other_vendored_modules/
+   ├─ ...
