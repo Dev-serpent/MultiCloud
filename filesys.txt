@@ -1,50 +1,51 @@
 MultiCloud/
 │
-├─ run.py
-├─ platform.py
-├─ vendor_init.py
+├─ run.py                  # (PLANNED) platform dispatcher
+├─ platform.py             # platform detection logic
+├─ vendor_init.py          # vendored module bootstrap
 ├─ filesys.txt
 ├─ readme.txt
 │
 ├─ core/
 │  ├─ __init__.py
-│  ├─ crypto.py        # Encryption / decryption (AES-GCM + Argon2)
-│  ├─ packer.py        # Folder → tar.gz and back
-│  ├─ splitter.py      # Split / reassemble archives
-│  ├─ verifier.py      # SHA256 integrity checks
-│  ├─ backup.py        # Backup orchestration
-│  └─ restore.py       # Restore orchestration
+│  ├─ crypto.py            # Encryption / decryption
+│  ├─ packer.py            # Folder compression
+│  ├─ splitter.py          # Archive splitting
+│  ├─ verifier.py          # Hash integrity checks
+│  ├─ backup.py            # Backup pipeline
+│  └─ restore.py           # Restore pipeline
 │
 ├─ vault/
 │  ├─ __init__.py
-│  ├─ models.py        # Credential data models
-│  ├─ auth.py          # Master password hashing
-│  ├─ store.py         # Encrypted vault storage
-│  └─ vault.py         # High-level vault API
+│  ├─ models.py            # Credential models
+│  ├─ auth.py              # Password hashing
+│  ├─ store.py             # Encrypted vault storage
+│  └─ vault.py             # Vault manager API
 │
 ├─ cli/
 │  ├─ __init__.py
-│  └─ cli.py           # Command-line interface
+│  └─ cli.py               # CLI interface (Arch-first)
 │
 ├─ tui/
 │  ├─ __init__.py
-│  └─ tui.py           # Terminal UI (text-based)
+│  ├─ tui.py               # TUI controller
+│  └─ screens.py           # TUI screens
 │
 ├─ gui/
 │  ├─ __init__.py
-│  ├─ gui_desktop.py   # customtkinter GUI
-│  └─ gui_ipad.py      # Pythonista-compatible GUI
+│  ├─ gui.py               # GUI controller (rookie/iPad)
+│  └─ widgets.py           # GUI widgets (to be implemented)
 │
 ├─ cloud/
 │  ├─ __init__.py
-│  ├─ base.py          # Cloud adapter interface
-│  ├─ aws.py           # AWS S3 adapter
-│  ├─ gdrive.py        # Google Drive adapter
-│  └─ dropbox.py       # Dropbox adapter
+│  ├─ base.py              # Cloud adapter interface
+│  ├─ aws.py               # AWS adapter
+│  ├─ gdrive.py            # Google Drive adapter
+│  └─ dropbox.py           # Dropbox adapter
 │
 └─ vendor/
    ├─ cryptography/
    ├─ argon2/
-   ├─ customtkinter/
    ├─ rich/
+   ├─ customtkinter/
    └─ other_vendored_modules/
