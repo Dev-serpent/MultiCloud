@@ -1,122 +1,97 @@
-MULTICLOUD
+MultiCloud
 ===========
 
-MultiCloud is a secure, cross-platform, multi-provider storage system.
-It packages folders, encrypts them, splits them into chunks, and distributes
-those chunks across multiple cloud providers.
+MultiCloud is a learning-focused, secure, multi-cloud backup system designed for:
+- Arch / Linux terminal users (CLI-first)
+- iPad users (GUI mode) who want an easy homelab-style cloud storage setup
 
-This project supports:
-- CLI (command mode)
-- TUI (terminal UI)
-- Desktop GUI (customtkinter)
-- iPad GUI (Pythonista / Pyto)
+The same core logic powers both modes.
 
---------------------------------------------------
-CORE CONCEPT
---------------------------------------------------
-Folder -> Package -> Encrypt -> Split -> Hash -> Upload
-Restore -> Download -> Verify -> Reassemble -> Decrypt -> Unpack
+--------------------------------
+CORE FEATURES
+--------------------------------
+- Folder backup and restore
+- Automatic compression and splitting
+- Encrypted storage (client-side)
+- Multi-cloud support (via adapters)
+- Secure credential vault
+- CLI for power users
+- GUI for beginners (iPad-friendly)
 
-Cloud providers never see plaintext data.
+--------------------------------
+RUNNING MULTICLOUD
+--------------------------------
 
---------------------------------------------------
-INTERFACES
---------------------------------------------------
+From the project root:
 
-1) CLI (Command Line)
-   - Scriptable
-   - Automation friendly
+    python run.py
 
-   Example:
-   multicloud backup /path/to/folder
-   multicloud restore BACKUP_ID
+The program will detect your platform and launch:
+- CLI (Linux / terminal)
+- GUI (iPad / touch-first environment)
 
-2) TUI (Terminal UI)
-   - Keyboard driven
-   - Interactive menus
-   - Works over SSH
+--------------------------------
+CLI GUIDE (ARCH / LINUX)
+--------------------------------
 
-   Launch:
-   multicloud tui
+All CLI commands are run through:
 
-3) Desktop GUI
-   - Built using customtkinter
-   - Dark mode
-   - Mouse + keyboard
+    python run.py <command>
 
-4) iPad GUI
-   - Built using Pythonista UI
-   - Touch friendly
-   - Uses the same core engine
+---- Backup a folder ----
 
---------------------------------------------------
-SECURITY MODEL
---------------------------------------------------
-- AES-256-GCM encryption
-- Argon2id key derivation
-- SHA-256 integrity checks
-- Encrypted credential vault
-- Zero-trust cloud providers
-- No plaintext secrets stored
+    python run.py backup <folder>
 
---------------------------------------------------
-PLATFORM SUPPORT
---------------------------------------------------
+Example:
+    python run.py backup ~/Documents
 
-Desktop:
-- Linux
-- macOS
-- Windows
-- Python 3.10+
+---- Restore a backup ----
 
-iPad:
-- Pythonista (recommended)
-- Pyto
+    python run.py restore <output_dir> <chunk1> <chunk2> ...
 
-Platform detection is automatic.
+Example:
+    python run.py restore restored/ backup.part0 backup.part1
 
---------------------------------------------------
-INSTALLATION (DESKTOP)
---------------------------------------------------
+---- Add a cloud account ----
 
-1) Clone repository
-   git clone <repo_url>
+    python run.py vault-add --name <name> --provider <provider> --access-key <key> --secret-key <secret>
 
-2) Install dependencies
-   pip install -r requirements.txt
+Example:
+    python run.py vault-add --name myaws --provider aws --access-key ABC --secret-key XYZ
 
-3) Run
-   python run.py
+---- List stored cloud accounts ----
 
---------------------------------------------------
-INSTALLATION (IPAD)
---------------------------------------------------
+    python run.py vault-list
 
-1) Install Pythonista
-2) Copy the multicloud folder into Pythonista
-3) Open run.py
-4) Tap Run
+--------------------------------
+VAULT SECURITY
+--------------------------------
 
---------------------------------------------------
-CLI USAGE
---------------------------------------------------
+- One master password protects all credentials
+- Credentials are encrypted on disk
+- Passwords are never stored in plaintext
+- Hashing + encryption are handled locally
 
-Backup:
-multicloud backup <folder>
+--------------------------------
+IPAD MODE (BEGINNER)
+--------------------------------
 
-Restore:
-multicloud restore <backup_id>
+On iPad, MultiCloud runs in GUI mode and provides:
+- Button-based backup and restore
+- Simple vault setup
+- No terminal knowledge required
 
-List clouds:
-multicloud clouds list
+This mode is intended for learning and light usage.
 
---------------------------------------------------
+--------------------------------
+PROJECT STRUCTURE
+--------------------------------
+
+See filesys.txt for the full directory layout.
+
+--------------------------------
 DISCLAIMER
---------------------------------------------------
-This project is for learning and experimentation.
-Always test restores before trusting important data.
+--------------------------------
 
---------------------------------------------------
-LICENSE
---------------------------------------------------
-MIT License
+This project is for learning, experimentation, and personal use.
+Not intended to replace enterprise backup solutions.
