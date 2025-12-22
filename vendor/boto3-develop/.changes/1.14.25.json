@@ -1,7 +1,0 @@
-[
-  {
-    "category": "``codeguruprofiler``", 
-    "description": "[``botocore``] Update codeguruprofiler client to latest version", 
-    "type": "api-change"
-  }
-]

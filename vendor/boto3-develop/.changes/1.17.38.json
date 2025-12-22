@@ -1,7 +1,0 @@
-[
-  {
-    "category": "``lookoutmetrics``", 
-    "description": "[``botocore``] Allowing uppercase alphabets for RDS and Redshift database names.", 
-    "type": "api-change"
-  }
-]

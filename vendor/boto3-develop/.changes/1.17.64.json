@@ -1,7 +1,0 @@
-[
-  {
-    "category": "``finspace-data``", 
-    "description": "[``botocore``] Update FinSpace Data serviceAbbreviation", 
-    "type": "api-change"
-  }
-]

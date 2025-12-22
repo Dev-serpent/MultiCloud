@@ -1,7 +1,0 @@
-[
-  {
-    "category": "``proton``",
-    "description": "[``botocore``] Deprecating APIs in AWS Proton namespace.",
-    "type": "api-change"
-  }
-]

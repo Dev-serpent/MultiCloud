@@ -1,7 +1,0 @@
-[
-  {
-    "category": "s3", 
-    "description": "[``botocore``] Updated mislabeled exceptions for S3 Object Lambda", 
-    "type": "bugfix"
-  }
-]

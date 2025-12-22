@@ -1,7 +1,0 @@
-[
-  {
-    "category": "``customer-profiles``", 
-    "description": "[``botocore``] Update customer-profiles client to latest version", 
-    "type": "api-change"
-  }
-]

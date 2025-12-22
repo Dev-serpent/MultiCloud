@@ -1,7 +1,0 @@
-[
-  {
-    "category": "``lambda``",
-    "description": "[``botocore``] Add DisallowedByVpcEncryptionControl to the LastUpdateStatusReasonCode and StateReasonCode enums to represent failures caused by VPC Encryption Controls.",
-    "type": "api-change"
-  }
-]

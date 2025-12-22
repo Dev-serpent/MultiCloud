@@ -1,7 +1,0 @@
-[
-  {
-    "category": "``logs``", 
-    "description": "[``botocore``] Update logs client to latest version", 
-    "type": "api-change"
-  }
-]

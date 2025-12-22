@@ -1,7 +1,0 @@
-[
-  {
-    "category": "``kendra``", 
-    "description": "[``botocore``] Update kendra client to latest version", 
-    "type": "api-change"
-  }
-]
