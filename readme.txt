@@ -1,5 +1,13 @@
 MULTICLOUD
 ===========
+PLEASE NOTE:
+============
+
+MULTICLOUD IS UNDER DEVELOPMENT AND IS HIGHLY EXPERMINTAL. WE ARE WORKING
+ON V.1.1 WHICH IS TO BE USED PROPERLY AS AN ENCRPTION SOFTWARE BUT V.1.0
+IS MAINLY EXPERMENTAL -W.G.
+
+===========
 
 MultiCloud is a secure, cross-platform, multi-provider storage system.
 It packages folders, encrypts them, splits them into chunks, and distributes
